@@ -10,9 +10,9 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use('/graphql', bodyParser.json(), graphqlHTTP(() => {
+app.use('/graphql', bodyParser.json(), graphqlHTTP({
   schema,
-  { graphiql: true }
+  graphiql: true
 }))
 
 const server = app.listen(process.env.PORT || 3000, () => {
