@@ -12,19 +12,19 @@ async function getHouses() {
   })
 }
 
-async function getHouseById(id) {
+async function getHouseName(houseId) {
   return new Promise(resolve => {
-    HouseModel.findById(id, (error, house) => {
+    HouseModel.findById(houseId, (error, house) => {
       if (error) {
-        throw new Error(`Error fetching house with id ${id}`)
+        throw new Error(`Error fethcing house with id ${houseId}. Details: ${error}`)
       }
 
-      return resolve(house)
+      return resolve(house.name)
     })
   })
 }
 
 module.exports = {
-  getHouses,
-  getHouseById
+  getHouseName,
+  getHouses
 }

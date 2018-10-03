@@ -3,8 +3,7 @@ const {
   GraphQLID,
   GraphQLString
 } = require('graphql')
-const HouseType = require('./HouseType')
-const { getHouseById } = require('../resolvers/houses')
+const { getHouseName } = require('../resolvers/houses')
 
 module.exports = new GraphQLObjectType({
   name: 'Student',
@@ -12,9 +11,9 @@ module.exports = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     house: {
-      type: HouseType,
+      type: GraphQLString,
       resolve(_) {
-        return getHouseById(_.house)
+        return getHouseName(_.house)
       }
     }
   })
