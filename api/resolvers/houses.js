@@ -24,7 +24,27 @@ async function getHouseName(houseId) {
   })
 }
 
+async function addHousePoints(house, points) {
+  return new Promise((resolve, reject) => {
+    HouseModel.findOne({ name: house }, (error, foundHouse) => {
+      if (error) {
+        return reject(new Error(`Error fetching house with name ${house}. Details: ${error}`))
+      }
+
+      foundHouse.points += points
+      foundHouse.save((error, updatedHouse) => {
+        if(error) {
+          return reject(new Error(`Error updating house ${house}. Details: ${error}`))
+        }
+
+        return resolve(updatedHouse)
+      })
+    })
+  })
+}
+
 module.exports = {
   getHouseName,
-  getHouses
+  getHouses,
+  addHousePoints
 }
