@@ -32,6 +32,7 @@ describe('GraphQL Schema', () => {
         expect(students).toContainEqual({ name: 'Hermione Granger' })
         expect(students).toContainEqual({ name: 'Ron Weasley' })
         expect(students).toContainEqual({ name: 'Draco Malfoy' })
+        expect(students).toContainEqual({ name: 'Luna Lovegood' })
       })
     })
 
