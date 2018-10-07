@@ -61,4 +61,32 @@ describe('GraphQL Schema', () => {
       })
     })
   })
+
+  describe('Mutations', () => {
+    describe('Add points to house', () => {
+      let house
+      beforeEach(async () => {
+        const response = await axios.post(graphqlUrl, {
+          query: `query { houses { name points } }`
+        })
+
+        const { houses } = response.data.data
+        house = houses.find(house => house.name === 'Gryffindor')
+      })
+
+      it('Should add 10 points to Gryffindor', async () => {
+        const response = await axios.post(graphqlUrl, {
+          query: `mutation { addPointsToHouse(points: 10, house:"Gryffindor") {
+            name
+            points
+          } }`
+        })
+        const updatedHouse = response.data.data.addPointsToHouse
+
+        expect(response.status).toBe(200)
+        expect(response.statusText).toBe('OK')
+        expect(updatedHouse.points).toBe(house.points + 10)
+      })
+    })
+  })
 })
