@@ -8,6 +8,10 @@ const House = new Schema({
     index: {
       unique: true
     }
+  },
+  points: {
+    type: Number,
+    default: 0
   }
 }, {
   timestamps: {

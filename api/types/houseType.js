@@ -2,7 +2,8 @@ const {
   GraphQLObjectType,
   GraphQLList,
   GraphQLID,
-  GraphQLString
+  GraphQLString,
+  GraphQLInt
 } = require('graphql')
 const StudentType = require('./StudentType')
 const { getStudentsByHouse } = require('../resolvers/students')
@@ -12,6 +13,7 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
+    points: { type: GraphQLInt },
     students: {
       type: new GraphQLList(StudentType),
       resolve(_) {
