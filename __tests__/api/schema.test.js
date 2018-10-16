@@ -38,7 +38,7 @@ describe('GraphQL Schema', () => {
     })
 
     describe('Student Houses', () => {
-      let students;
+      let students
       beforeAll(async() => {
         const response = await axios.post(graphqlUrl, {
           query: `query { students { name house } }`
