@@ -12,10 +12,11 @@ describe('GraphQL Schema', () => {
 
         expect(response.status).toBe(200)
         expect(response.statusText).toBe('OK')
-        expect(houses).toContainEqual({ name: 'Gryffindor' })
-        expect(houses).toContainEqual({ name: 'Slytherin' })
-        expect(houses).toContainEqual({ name: 'Ravenclaw' })
-        expect(houses).toContainEqual({ name: 'Hufflepuff' })
+        expect(houses).toMatchSnapshot()
+        // expect(houses).toContainEqual({ name: 'Gryffindor' })
+        // expect(houses).toContainEqual({ name: 'Slytherin' })
+        // expect(houses).toContainEqual({ name: 'Ravenclaw' })
+        // expect(houses).toContainEqual({ name: 'Hufflepuff' })
       })
     })
 
